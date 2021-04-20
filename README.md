@@ -9,5 +9,26 @@ Add kong password:
 
 #docker-compose up -d
 
-Scale kong containers, if needed:
-#docker-compose scale kong=3
+######################
+Securing API Admin as Service:
+
+#curl -X POST http://localhost:8001/services \
+  --data name=admin-api \
+  --data host=localhost \
+  --data port=8001
+  
+  #curl -X POST http://localhost:8001/services/admin-api/routes \
+  --data paths\[\]=/admin-api
+  
+  #curl -X POST http://localhost:8001/services/admin-api/plugins \
+	    --data "name=basic-auth"  \
+	    --data "config.hide_credentials=true"
+
+#curl -d "username=admin&custom_id=1" http://localhost:8001/consumers/
+
+#curl -X POST http://localhost:8001/consumers/admin/basic-auth     --data "username=admin"     --data "password=admin"
+
+-Use base64 credentials:
+# echo "admin:admin" |base64
+
+#curl -s -X GET   --url http://localhost:80/admin-api  --header 'Authorization: Basic YWRtaW46YWRtaW4K'
