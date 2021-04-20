@@ -54,7 +54,12 @@ services:
     restart: always
     networks:
       - kong-net
+    #If use ssl in kong, uncoment 4 lines below
+    #volumes:
+    #  - "./ssl:/mnt/ssl"
     environment:
+    #  KONG_SSL_CERT: /mnt/ssl/ssl.pem
+    #  KONG_SSL_CERT_KEY: /mnt/ssl/ssl.key
       KONG_DATABASE: postgres
       KONG_PG_HOST: kong-database
       KONG_PG_PASSWORD: kong
