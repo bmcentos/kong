@@ -1,20 +1,24 @@
-From: https://github.com/Kong/docker-kong/tree/master/compose
+Instalation of KONG + POSTGRES + KONGA
 
-Add kong password:
-#echo "kong" > POSTGRES_PASSWORD
-
+-Download of docker-compose
 #sudo curl -L https://github.com/docker/compose/releases/download/1.29.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 
-
 #sudo chmod +x /usr/local/bin/docker-compose
+
+-Download of compose file?
+#wget https://raw.githubusercontent.com/bmcentos/kong/main/docker-compose.yml
 
 #docker-compose up -d
 
 Wait for 5 to 10 minutes, until all stay up
 
 -Access KONGA: http://$IP:8080
+
+
 ![image](https://user-images.githubusercontent.com/25855270/115333532-34d95700-a170-11eb-96c5-f6c23ae45006.png)
 
 -Access root route http: http://$IP
+
+
 ![image](https://user-images.githubusercontent.com/25855270/115333692-7cf87980-a170-11eb-941a-21bc34c8ca24.png)
 
 -Access root route https: http://$IP:443
