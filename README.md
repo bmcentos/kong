@@ -9,6 +9,21 @@ Add kong password:
 
 #docker-compose up -d
 
+Wait for 5 to 10 minutes, until all stay up
+
+-Access KONGA: http://$IP:8080
+![image](https://user-images.githubusercontent.com/25855270/115333532-34d95700-a170-11eb-96c5-f6c23ae45006.png)
+
+-Access root route http: http://$IP
+![image](https://user-images.githubusercontent.com/25855270/115333692-7cf87980-a170-11eb-941a-21bc34c8ca24.png)
+
+-Access root route https: http://$IP:443
+
+	OBS: If you using SSL, create the directory .ssl and put key and pem file in it
+	mkdir .ssl
+	cp ssl.pem ssl.key .ssl/
+	-uncomment the volume from kong service in docker-compose and the environments about ssl keys
+
 ######################
 Securing API Admin as Service:
 
