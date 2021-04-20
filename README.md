@@ -8,3 +8,6 @@ Add kong password:
 #sudo chmod +x /usr/local/bin/docker-compose
 
 #docker-compose up -d
+
+Scale kong containers, if needed:
+#docker-compose scale kong=3
