@@ -8,6 +8,10 @@ Instalation of KONG + POSTGRES + KONGA
 
 -Download of compose file:
 
+#git clone https://github.com/bmcentos/kong.git && cd kong
+
+or
+
 #wget https://raw.githubusercontent.com/bmcentos/kong/main/docker-compose.yml
 
 #docker-compose up -d
@@ -54,3 +58,38 @@ Securing API Admin as Service:
 # echo "admin:admin" |base64
 
 #curl -s -X GET   --url http://localhost:80/admin-api  --header 'Authorization: Basic YWRtaW46YWRtaW4K'
+
+
+----------
+
+Test FastAPI 
+
+#cd fastApi/
+
+#docker build -t fastapi .
+
+#docker run --network kong_kong-net -d --name fastapi -p 8081:80 fastapi
+
+-Add service in Konga pointing to fastapi created
+![image](https://user-images.githubusercontent.com/25855270/148257301-7dfaf5b3-d999-4ec9-a73d-dfe8683c2801.png)
+
+- Create route /app
+
+![image](https://user-images.githubusercontent.com/25855270/148257435-085a5ced-146e-4154-81f9-aa55a4d28897.png)
+
+
+-Test access:
+
+- endpoint /
+#curl -X GET  http://$IP/app
+
+- endpoint /teste
+#curl -X GET  http://$IP/app/teste
+
+- endpoint items/[num]
+#curl -X GET  http://$IP/app/items/1
+
+So after that you can test plungins and consumers functionality
+
+
+
