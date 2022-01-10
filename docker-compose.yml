@@ -5,6 +5,9 @@ networks:
  kong-net:
   driver: bridge
 
+volumes:
+  pg_data:
+
 services:
 
   #######################################
@@ -13,6 +16,9 @@ services:
   kong-database:
     image: postgres:9.6
     restart: always
+    #To use persistence
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
     networks:
       - kong-net
     environment:
