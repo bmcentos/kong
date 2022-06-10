@@ -5,7 +5,7 @@
 
 ## INICIO
 #IP do servidor KONG
-KONG_IP=10.215.12.219
+KONG_IP=192.168.0.10
 
 #Endereços IP dos targets para balanceamento
 TARGET_LB="
